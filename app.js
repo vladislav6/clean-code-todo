@@ -9,8 +9,8 @@
 
 const taskInput = document.getElementById('new-task'); //Add a new task.
 const addButton = document.getElementsByTagName('button')[0]; //first button
-const incompleteTaskHolder = document.getElementById('incompleteTasks'); //ul of #incompleteTasks
-const completedTasksHolder = document.getElementById('completed-tasks'); //completed-tasks
+const incompleteTaskHolder = document.querySelector('.incomplete'); //ul of #incompleteTasks
+const completedTasksHolder = document.querySelector('.completed'); //completed-tasks
 
 //New task list item
 const createNewTaskElement = function (taskString) {
@@ -30,18 +30,22 @@ const createNewTaskElement = function (taskString) {
   const deleteButtonImg = document.createElement('img'); //delete button image
 
   label.innerText = taskString;
-  label.className = 'task';
+  label.className = 'section__title-task section__task';
 
   //Each elements, needs appending
+  listItem.className = 'section__item';
   checkBox.type = 'checkbox';
+  checkBox.className = 'section__checkbox';
   editInput.type = 'text';
-  editInput.className = 'task';
+  editInput.className = 'section__input section__task';
 
   editButton.innerText = 'Edit'; //innerText encodes special characters, HTML does not.
-  editButton.className = 'edit';
+  editButton.className = 'section__button edit';
 
-  deleteButton.className = 'delete';
+  deleteButton.className = 'section__button delete';
   deleteButtonImg.src = './remove.svg';
+  deleteButtonImg.className = 'delete__icon';
+  deleteButtonImg.alt = ' ';
   deleteButton.appendChild(deleteButtonImg);
 
   //and appending.
@@ -73,7 +77,7 @@ const editTask = function () {
   const editInput = listItem.querySelector('input[type=text]');
   const label = listItem.querySelector('label');
   const editBtn = listItem.querySelector('.edit');
-  const containsClass = listItem.classList.contains('editMode');
+  const containsClass = listItem.classList.contains('edit-mode');
   //If class of the parent is .editmode
   if (containsClass) {
     //switch to .editmode
@@ -86,7 +90,7 @@ const editTask = function () {
   }
 
   //toggle .editmode on the parent.
-  listItem.classList.toggle('editMode');
+  listItem.classList.toggle('edit-mode');
 };
 
 //Delete task.
