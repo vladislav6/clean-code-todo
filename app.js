@@ -5,36 +5,34 @@ const completedTasksHolder = document.querySelector('.complete');
 
 const createNewTaskElement = function (taskString) {
   const taskListItem = document.createElement('li');
-  const checkBox = document.createElement('input');
-  const label = document.createElement('label');
-  const editInput = document.createElement('input');
-  const editButton = document.createElement('button');
-  const deleteButton = document.createElement('button');
-  const deleteButtonImg = document.createElement('img');
+  taskListItem.className = 'section__item';
 
+  const checkBox = document.createElement('input');
+  checkBox.type = 'checkbox';
+  checkBox.className = 'section__checkbox';
+
+  const label = document.createElement('label');
   label.innerText = taskString;
   label.className = 'section__title-task section__task';
 
-  taskListItem.className = 'section__item';
-  checkBox.type = 'checkbox';
-  checkBox.className = 'section__checkbox';
+  const editInput = document.createElement('input');
   editInput.type = 'text';
   editInput.className = 'section__input section__task';
 
+  const editButton = document.createElement('button');
   editButton.innerText = 'Edit'; //innerText encodes special characters, HTML does not.
   editButton.className = 'section__button edit';
 
+  const deleteButton = document.createElement('button');
   deleteButton.className = 'section__button delete';
+
+  const deleteButtonImg = document.createElement('img');
   deleteButtonImg.src = './remove.svg';
   deleteButtonImg.className = 'delete__icon';
   deleteButtonImg.alt = ' ';
-  deleteButton.appendChild(deleteButtonImg);
 
-  taskListItem.appendChild(checkBox);
-  taskListItem.appendChild(label);
-  taskListItem.appendChild(editInput);
-  taskListItem.appendChild(editButton);
-  taskListItem.appendChild(deleteButton);
+  deleteButton.appendChild(deleteButtonImg);
+  taskListItem.append(checkBox, label, editInput, editButton, deleteButton);
   return taskListItem;
 };
 
