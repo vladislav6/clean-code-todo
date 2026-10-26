@@ -4,8 +4,8 @@
   "description": "Учебный репозиторий для задания [«Clean Code»](https://github.com/rolling-scopes-school/tasks/blob/master/fullstack-engineering/tasks/clean-code/README.md) курса RS School Fullstack Engineering.",
   "main": "app.js",
   "scripts": {
-    "lint": "eslint . --fix",
-    "format": "prettier . --write",
+    "lint": "eslint .",
+    "format": "prettier .",
     "prepare": "husky"
   },
   "lint-staged": {
